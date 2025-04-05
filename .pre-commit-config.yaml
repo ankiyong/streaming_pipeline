@@ -1,18 +1,19 @@
 repos:
-  - repo: https://github.com/ambv/black
-    rev: ''
-    hooks:
-      - id: black
-        language_version: python3.8 
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: ''
-    hooks:
-      - id: flake8
   - repo: https://github.com/pycqa/isort
-    rev: ''
+    rev: 5.12.0
     hooks:
       - id: isort
-  - repo: https://github.com/necaris/pre-commit-pyright
-    rev: ''
+        name: isort (python)
+        args: ["--profile", "black", "-l", "120", "--skip-gitignore"]
+  - repo: https://github.com/pycqa/autoflake
+    rev: v1.4
     hooks:
-      - id: pyright
+      - id: autoflake
+        args: 
+          - --in-place
+          - --remove-all-unused-imports
+          - --remove-unused-variables
+  - repo: https://github.com/pycqa/isort
+    rev: '5.10.1'
+    hooks:
+      - id: isort
