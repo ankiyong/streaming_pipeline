@@ -9,14 +9,12 @@ class CRUD(Database):
             return result
         except Exception as e:
             return f"Error {e}"
-    
     def create_db(self,sql):
         try:
             self.cursor.execute(sql)
             self.db.commit()
         except Exception as e:
             return f"Error {e}"
-        
     def insert_data(self,ticker,sector):
         sql = f"""
             INSERT INTO public.sectors(ticker,sector)

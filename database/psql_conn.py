@@ -2,7 +2,6 @@ import psycopg2,os
 from dotenv import load_dotenv
 from pathlib import Path
 
-
 class Database():
     def __init__(self):
         env_path = Path(__file__).resolve().parent.parent / ".env"
@@ -15,11 +14,9 @@ class Database():
                 port=os.environ.get('DB_PORT')
             )
         self.cursor = self.db.cursor()
-
     def __del__(self):
         self.db.close()
         self.cursor.close()
-    
     def execute(self,query,args={}):
         self.cursor.execute(query,args)
         row = self.cursor.fetchall()
